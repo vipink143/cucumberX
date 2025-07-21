@@ -1,17 +1,36 @@
+
+
 {
-  "name": "cucumberx",
+  "name": "cucumbernewproject",
   "version": "1.0.0",
+  "description": "cucumber",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "hrm-test": "cypress run --spec 'cypress/e2e/Integration/Feature_files/Login.feature','cypress/e2e/Integration/Feature_files/Admin.feature'",
+    "stanza-test": "cypress run --spec 'cypress/e2e/Integration/step_defenition/Login.feature','cypress/e2e/Integration/step_defenition/Home_Page.feature'"
   },
-  "keywords": [],
-  "author": "",
+  "author": "vipin",
   "license": "ISC",
-  "description": "",
   "devDependencies": {
-    "cypress": "^14.5.2",
+    "cypress": "^14.4.0",
     "cypress-cucumber-preprocessor": "^4.3.1",
-    "cypress-mochawesome-reporter": "^3.8.4"
+    "cypress-mochawesome-reporter": "^3.8.2",
+    "mochawesome": "^7.1.3",
+    "mochawesome-merge": "^4.4.1",
+    "mochawesome-report-generator": "^6.2.0",
+    "multiple-cucumber-html-reporter": "^3.9.2"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "step_definitions": "cypress/e2e/Integration/Feature_Files"
+  },
+  "cucumberJson": {
+    "generate": true,
+    "outputFolder": "cypress/cucumber-json",
+    "filePrefix": "",
+    "fileSuffix": ".cucumber"
+  },
+  "dependencies": {
+    "git-filter-repo": "^0.0.30"
   }
 }

@@ -1,24 +1,32 @@
-const { defineConfig } = require("cypress");
-const cucumber = require('cypress-cucumber-preprocessor').default;
-
+const { defineConfig } = require('cypress');
+ const cucumber = require('cypress-cucumber-preprocessor').default;
 
 module.exports = defineConfig({
+
   reporter: 'cypress-mochawesome-reporter',
-  e2e: {
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-
-      on('file:preprocessor', cucumber());
-      require('cypress-mochawesome-reporter/plugin')(on);
-
-    },
+  reporterOptions: {
+    reportDir: 'cypress/reports/mochawesome',
+    overwrite: false,
+    html: false,
+    json: true,
   },
 
-  'cypress-cucumber-preprocessor': {
-nonGlobalStepDefinitions: false,
-step_definitions: './cypress/e2e/',
-},
-specPattern: 'cypress/e2e/**/*.feature',
-supportFile:false
-});
+  e2e: {
+    watchForFileChanges:false ,
+    pageLoadTimeout:60000,
+    setupNodeEvents(on, config) {
+      on('file:preprocessor', cucumber());
+      require('cypress-mochawesome-reporter/plugin')(on);
+    },
+    specPattern: '**/*.feature',
 
+    supportFile:false
+  },
+
+  env:
+  {
+    "hrm_url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+    "stanza_prod_url":"https://nucleus.stanzaliving.com/login"
+  }
+  
+});
