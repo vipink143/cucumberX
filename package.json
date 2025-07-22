@@ -1,7 +1,5 @@
-
-
 {
-  "name": "cucumbernewproject",
+  "name": "cucumberx",
   "version": "1.0.0",
   "description": "cucumber",
   "main": "index.js",
@@ -12,7 +10,7 @@
   "author": "vipin",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^14.4.0",
+    "cypress": "^14.5.2",
     "cypress-cucumber-preprocessor": "^4.3.1",
     "cypress-mochawesome-reporter": "^3.8.2",
     "mochawesome": "^7.1.3",

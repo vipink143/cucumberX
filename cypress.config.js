@@ -3,13 +3,7 @@ const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
 
-  reporter: 'cypress-mochawesome-reporter',
-  reporterOptions: {
-    reportDir: 'cypress/reports/mochawesome',
-    overwrite: false,
-    html: false,
-    json: true,
-  },
+  
 
   e2e: {
     watchForFileChanges:false ,
@@ -23,9 +17,17 @@ module.exports = defineConfig({
     supportFile:false
   },
 
+  reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    reportDir: 'cypress/reports/mochawesome',
+    overwrite: false,
+    html: false,
+    json: true,
+  },
+
   env:
   {
-    "hrm_url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+    dryRun: true,
     "stanza_prod_url":"https://nucleus.stanzaliving.com/login"
   }
   
