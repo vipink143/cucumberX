@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "hrm-test": "cypress run --spec 'cypress/e2e/Integration/Feature_files/Login.feature','cypress/e2e/Integration/Feature_files/Admin.feature'",
-    "stanza-test": "cypress run --spec 'cypress/e2e/Integration/step_defenition/Login.feature','cypress/e2e/Integration/step_defenition/Home_Page.feature'"
+    "stanza-test": "cypress run --spec 'cypress/e2e/Integration/Feature_Files/Login_Page.feature' "
   },
   "author": "vipin",
   "license": "ISC",

@@ -3,7 +3,7 @@ const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
 
-  
+  reporter: 'mochawesome',
 
   e2e: {
     watchForFileChanges:false ,
@@ -21,7 +21,7 @@ module.exports = defineConfig({
   reporterOptions: {
     reportDir: 'cypress/reports/mochawesome',
     overwrite: false,
-    html: false,
+    html: true,
     json: true,
   },
 
