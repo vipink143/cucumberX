@@ -9,7 +9,7 @@
     "report:pre": "npm run results-junit:delete",
     "report:post": "npm run results-junit:combine",
     "hrm-test": "cypress run --spec 'cypress/e2e/Integration/Feature_files/Login.feature','cypress/e2e/Integration/Feature_files/Admin.feature'",
-    "stanza-test": "cypress run --spec 'cypress/e2e/Integration/Feature_Files/Login_Page.feature' "
+    "stanza-test": "cypress run --spec 'cypress/e2e/Integration/Feature_Files/Login_Page.feature','cypress/e2e/Integration/Feature_Files/Home_Page.feature' "
   },
   "author": "vipin",
   "license": "ISC",

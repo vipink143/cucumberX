@@ -1,0 +1,16 @@
+
+{
+    "home_locator":
+    {
+        "ticket_dashboard_verify_locator":"div.sc-bwCtUz.sc-gwVKww.vJTPz",
+        "search_locator":"input[name='search']",
+        "home_dropdown_locator":"button[id='284458456a02-b24f6bd5542-3bc-aa32f-e']",
+        "more_filter_locator":"span[class='title']",
+        "more_filter_verification_locator":"div[class='title']"
+
+        
+    }
+    
+
+
+}
