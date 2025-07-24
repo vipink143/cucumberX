@@ -4,6 +4,7 @@
         "mobile_input_locator":"input[placeholder='Registered Mobile Number']",
         "submit_mobile_locator":"button[type='submit']",
         "otp_placeholder_locator":".sc-iQKALj >input",
-        "submit_otp_locator":"button[type='submit']"
+        "submit_otp_locator":"button[type='submit']",
+        "invalidUser_msg_locator":".error"
     }
 }

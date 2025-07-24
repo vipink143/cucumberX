@@ -41,3 +41,7 @@ Then("Click on submit button",()=>{
     Login_Page.submitOtp()
 
 })
+
+Then("Verify the error message",()=>{
+    Login_Page.invalidUserVerification()
+})
