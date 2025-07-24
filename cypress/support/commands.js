@@ -23,3 +23,17 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+let home_element_locator = require("../Page_Elements/Home_Page_Elements.json")
+// For dropdown
+
+Cypress.Commands.add('selectStatus', (statusList) => {
+    cy.get(home_element_locator.home_locator.dropdown_locator).click();
+    statusList.forEach((status) => {
+      cy.get('home_element_locator.home_locator.dropdown_value_locator').contains(status).click();
+    });
+  });
+  
+  // use in test
+
+  cy.selectStatus(['Open', 'Resolved']);

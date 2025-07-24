@@ -51,3 +51,18 @@ Then("Verify the more filter page",()=>{
     
     Home_Page.moreFilterVerification()
 })
+
+
+When("Click on the dropdown",()=>{
+    Home_Page.dropdownStatus();
+})
+
+Then("Select the multiple value from the dropdown",()=>{
+
+    Home_Page.selectValueFromDropdown();
+
+})
+
+And("Verify the selected status",()=>{
+    Home_Page.selectedDropdownValueVerification();
+})

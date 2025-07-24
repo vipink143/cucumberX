@@ -45,6 +45,6 @@ class Login_Page
             expect(actualText.trim()).to.eq(expectedText)
         })
     }
-
+    
 
 } export default new Login_Page

@@ -6,7 +6,11 @@
         "search_locator":"input[name='search']",
         "home_dropdown_locator":"button[id='284458456a02-b24f6bd5542-3bc-aa32f-e']",
         "more_filter_locator":"span[class='title']",
-        "more_filter_verification_locator":"div[class='title']"
+        "more_filter_verification_locator":"div[class='title']",
+        "dropdown_locator":".sc-jeCdPy > .sc-fOKMvo > .sc-eLExRp > div > .field-label",
+        "dropdown_value_locator":".select__menu-list",
+        "selected_dropdown_value_locator":":nth-child(2) > .sc-bwCtUz > .sc-epnACN > .filter-list > .sc-iQNlJl"
+
 
         
     }
