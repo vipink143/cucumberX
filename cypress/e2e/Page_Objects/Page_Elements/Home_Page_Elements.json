@@ -9,7 +9,8 @@
         "more_filter_verification_locator":"div[class='title']",
         "dropdown_locator":".sc-jeCdPy > .sc-fOKMvo > .sc-eLExRp > div > .field-label",
         "dropdown_value_locator":".select__menu-list",
-        "selected_dropdown_value_locator":":nth-child(2) > .sc-bwCtUz > .sc-epnACN > .filter-list > .sc-iQNlJl"
+        "selected_dropdown_value_locator":":nth-child(2) > .sc-bwCtUz > .sc-epnACN > .filter-list > .sc-iQNlJl",
+        "add_new_ticket_button_locator":"button[class='sc-chPdSV sc-jKJlTe jpJRqz action-btn']"
 
 
         

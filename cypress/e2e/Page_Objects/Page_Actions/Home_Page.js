@@ -9,6 +9,7 @@ class Home_Page {
     get dropdownInput() { return cy.get(home_element_locator.home_locator.dropdown_locator)}
     get dropdownValueInput() { return cy.get(home_element_locator.home_locator.dropdown_value_locator)}
     get selectedDropdownValueInput() { return cy.get(home_element_locator.home_locator.selected_dropdown_value_locator)}
+    get addNewTicketInput() { return cy.get(home_element_locator.home_locator.add_new_ticket_button_locator)}
 
     
 
@@ -77,15 +78,31 @@ class Home_Page {
              .should('contain.text', 'In Progress')
              .and('contain.text', 'COMPLETED')
              .and('contain.text', 'Resolved');
- 
-    }
-    // Select single options from dropdown    
+
+             // Select single options from dropdown    
      //     cy.get('.sc-jeCdPy > .sc-fOKMvo > .sc-eLExRp > div > .field-label')
          //     .should('contain.text', 'In Progress')
+ 
+    }
+         addNewTicket()
+         {
+            this.addNewTicketInput.should('not.be.disabled')
+            .then(($btn)=>{
+                if($btn.is(":enabled"))
+                {
+                    cy.wrap($btn).click();
+                }
+                else
+                {
+                    //Button is disabled
+                }
+            })
+         }
+         verifyAddNewTicket()
+         {
+            cy.url().should('contain','/add')
+         }
 
 
 } export default new Home_Page
 
-//cy.get(':nth-child(2) > .sc-bwCtUz > .sc-epnACN > .filter-list > .sc-iQNlJl')
-
-// div.sc-iQNlJl.cOishN

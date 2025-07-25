@@ -66,3 +66,11 @@ Then("Select the multiple value from the dropdown",()=>{
 And("Verify the selected status",()=>{
     Home_Page.selectedDropdownValueVerification();
 })
+
+When("Click on add new ticket button",()=>{
+    Home_Page.addNewTicket();
+})
+
+Then("Verify the ticket creation page",()=>{
+    Home_Page.verifyAddNewTicket();
+})
