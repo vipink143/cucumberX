@@ -182,8 +182,9 @@ pipeline {
 
     environment {
         // ✅ Force Cypress cache inside Jenkins workspace so binary persists between builds
-        CYPRESS_CACHE_FOLDER = "${WORKSPACE}/.cache/Cypress"
         CI = "true"
+        CYPRESS_CACHE_FOLDER = "${WORKSPACE}/.cache/Cypress"   // ✅ force binary into workspace
+        CYPRESS_INSTALL_BINARY = "true"
     }
 
     parameters {
@@ -212,9 +213,11 @@ pipeline {
         stage('Stage 2 - Install Dependencies & Cypress') {
             steps {
                 sh 'npm ci'
-                sh 'npx cypress install'   // ✅ download Cypress binary
-                sh 'npx cypress verify'    // ✅ confirm binary works
-                echo '✅ Dependencies and Cypress installed'
+                sh 'echo "Cypress cache folder: $CYPRESS_CACHE_FOLDER"'
+                sh 'npx cypress cache path'
+                sh 'npx cypress cache clear || true'
+                sh 'npx cypress install --force'
+                sh 'npx cypress verify'
             }
         }
 
