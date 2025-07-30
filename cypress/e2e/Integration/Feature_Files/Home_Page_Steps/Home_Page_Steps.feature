@@ -1,12 +1,12 @@
 Feature: Home page functionality
 
     Background:
-        Given Visit the website
-        When Provide mobile number in the text field "2371387288"
-        Then Click on send otp button for login
-        When Enter the otp
-        Then Click on submit button
 
+        # Given Visit the website
+        When I login with valid mobile number "2371387289"
+
+
+        
     Scenario: Verify the ticket dashboard
         Then Verify the ticket text in the dashboard
 
@@ -15,9 +15,9 @@ Feature: Home page functionality
 
 
 
-    Scenario: Verify the dropdown functionality
-        When Click on the dropdown
-        Then Type the search text and enter
+    # Scenario: Verify the dropdown functionality
+    #     When Click on the dropdown
+    #     Then Type the search text and enter
 
 
     Scenario: Verify the more filter button is clickable

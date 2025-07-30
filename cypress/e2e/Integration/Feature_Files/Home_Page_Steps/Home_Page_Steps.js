@@ -1,34 +1,13 @@
 import Login_Page from "../../../Page_Objects/Page_Actions/Login_Page"
-import {When,Then,Given,And} from "cypress-cucumber-preprocessor/steps"
+import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
+//import { Given, When, Then } from "cypress-cucumber-preprocessor/steps";
+
 import Home_Page from "../../../Page_Objects/Page_Actions/Home_Page"
 
 
 
-Given("Visit the website",()=>{
-
-    cy.visit(Cypress.env('stanza_prod_url'))
-})
-
-When("Provide mobile number in the text field {string}",(mobileNumber)=>{
-
-    Login_Page.enterMobileNumber(mobileNumber)
-    
-})
-
-Then("Click on send otp button for login",()=>{
-
-    Login_Page.submitMobileNumber()
-
-})
-
-When("Enter the otp",()=>{
-
-    Login_Page.enterOtp()
-
-})
-
-Then("Click on submit button",()=>{
-    Login_Page.submitOtp()
+When("I login with valid mobile number {string}",(mobileNumber)=>{
+    cy.loginWithOtp(mobileNumber)
 
 })
 
@@ -63,7 +42,7 @@ Then("Select the multiple value from the dropdown",()=>{
 
 })
 
-And("Verify the selected status",()=>{
+Then("Verify the selected status",()=>{
     Home_Page.selectedDropdownValueVerification();
 })
 
