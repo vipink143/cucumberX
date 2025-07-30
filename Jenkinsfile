@@ -183,6 +183,7 @@ pipeline {
     environment {
         // ✅ Force Cypress cache inside Jenkins workspace so binary persists between builds
         CYPRESS_CACHE_FOLDER = "${WORKSPACE}/.cache/Cypress"
+        CI = "true"
     }
 
     parameters {
