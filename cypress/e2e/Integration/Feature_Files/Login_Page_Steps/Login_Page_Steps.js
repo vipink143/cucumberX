@@ -60,9 +60,19 @@ import { Given, When, Then } from "@badeball/cypress-cucumber-preprocessor";
 // });
 
 When("I login with valid mobile number {string}", (mobileNumber) => {
+    if (Cypress.env('dryRun')) {
+            cy.log("Dry run: Skipping navigation to login page.");
+            return;
+           }
   cy.loginWithOtp(mobileNumber);
+
+  
 });
 
 When("I login with invalid mobile number {string}", (mobile) => {
+    if (Cypress.env('dryRun')) {
+            cy.log("Dry run: Skipping navigation to login page.");
+            return;
+           }
   cy.loginWithInvalidMobile(mobile);
 });

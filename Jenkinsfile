@@ -81,6 +81,7 @@ pipeline {
        stage('Stage 2 - Installing dependencies') {
            steps {
                 sh 'npm i'
+                sh 'npx cypress install'   // ✅ ensures Cypress binary is downloaded
                 echo 'dependencies installed'
 
            }
