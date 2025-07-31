@@ -212,12 +212,23 @@ pipeline {
 
         stage('Stage 2 - Install Dependencies & Cypress') {
             steps {
-                sh 'npm ci'
-                sh 'echo "Cypress cache folder: $CYPRESS_CACHE_FOLDER"'
-                sh 'npx cypress cache path'
-                sh 'npx cypress cache clear || true'
-                sh 'npx cypress install --force'
-                sh 'npx cypress verify'
+                sh '''
+                    echo ">>> Installing dependencies"
+                    npm ci
+
+                    echo ">>> Forcing Cypress binary install inside workspace cache"
+                    export CYPRESS_CACHE_FOLDER=$WORKSPACE/.cache/Cypress
+                    echo "CYPRESS_CACHE_FOLDER is set to: $CYPRESS_CACHE_FOLDER"
+
+                    # Show current Cypress cache path
+                    npx cypress cache path || true
+
+                    # Clear old cache & force re-install
+                    DEBUG=cypress:* npx cypress install --force
+
+                    echo ">>> Verifying Cypress binary"
+                    DEBUG=cypress:* npx cypress verify
+                '''
             }
         }
 
@@ -236,30 +247,26 @@ pipeline {
 
         stage('Stage 4 - Run Cypress Tests') {
             steps {
-                script {
-                    if (params.TEST_SPEC == "cypress/e2e/tests/*.cy.js") {
-                        echo "▶ Running ALL tests on ${params.BROWSER} (${params.BROWSER_MODE}), TAG: ${params.TAG}, ENV: ${params.TEST_ENVIRONMENT}"
-                        sh "npx cypress run --${params.BROWSER_MODE} --browser ${params.BROWSER} --env environmentName=${params.TEST_ENVIRONMENT},grepTags=${params.TAG} ${params.RECORD_TESTS}"
-                    } else {
-                        echo "▶ Running single test: ${params.TEST_SPEC}"
-                        sh "npx cypress run --spec ${params.TEST_SPEC} --${params.BROWSER_MODE} --browser ${params.BROWSER} --env environmentName=${params.TEST_ENVIRONMENT},grepTags=${params.TAG} ${params.RECORD_TESTS}"
-                    }
-                }
+                sh '''
+                    export CYPRESS_CACHE_FOLDER=$WORKSPACE/.cache/Cypress
+                    echo "Running Cypress with cache folder: $CYPRESS_CACHE_FOLDER"
+                    DEBUG=cypress:* npx cypress run --headless --browser electron --env environmentName=local,grepTags=@regression --record false
+                '''
             }
         }
 
-        stage('Stage 5 - Merge Reports') {
-            steps {
-                script {
-                    if (fileExists('package.json') && sh(script: "npm run | grep report:post", returnStatus: true) == 0) {
-                        sh "npm run report:post"
-                    } else {
-                        echo "⚠️ No report:post script found, skipping merge"
-                    }
-                }
-            }
-        }
-    }
+    //     stage('Stage 5 - Merge Reports') {
+    //         steps {
+    //             script {
+    //                 if (fileExists('package.json') && sh(script: "npm run | grep report:post", returnStatus: true) == 0) {
+    //                     sh "npm run report:post"
+    //                 } else {
+    //                     echo "⚠️ No report:post script found, skipping merge"
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
     post {
         always {
