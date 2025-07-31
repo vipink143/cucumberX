@@ -248,9 +248,12 @@ pipeline {
         stage('Stage 4 - Run Cypress Tests') {
             steps {
                 sh '''
-                    export CYPRESS_CACHE_FOLDER=$WORKSPACE/.cache/Cypress
-                    echo "Running Cypress with cache folder: $CYPRESS_CACHE_FOLDER"
-                    DEBUG=cypress:* npx cypress run --headless --browser electron --env environmentName=local,grepTags=@regression --record false
+                    echo ">>> Installing Cypress binary"
+                    npx cypress install --force
+                    npx cypress verify
+
+                    echo ">>> Running Tests"
+                    npx cypress run --headless --browser electron --env environmentName=local,grepTags=@regression --record false
                 '''
             }
         }
